@@ -1,0 +1,35 @@
+{
+    "language":"English",
+    "@language":{
+        "description":"The current language"},
+    "homepagetitle":"Notes",
+    "@homepagetitle":{"description":"the app title"},
+    "zeronotes":"You have zero notes! Start adding some",
+     "@zeronotes":{"description":"zero notes title"},
+     "addnote":"Add Note",
+      "@addnote":{"description":"add note page title"},
+      "addnotetitlelabel":"Title",
+      "@addnotetitlelabel":{"description":"add note title field label"},
+       "addnotedescriptionlabel":"Note",
+      "@addnotedescriptionlabel":{"description":"add note description field label"},
+      "addnotebuttonlabel":"Add",
+      "@addnotebuttonlabel":{"description":"add note button text"},
+      "addnotetitleerrorlabel":"Please add the note title",
+      "@addnotetitleerrorlabel":{"description":"add note title field error label"},
+       "addnotedescriptionerrorlabel":"Please add the note ",
+      "@addnotedescriptionerrorlabel":{"description":"add note description field error label"},
+       "updatenote":"Update Note",
+      "@addnote":{"description":"update note page title"},
+      "updatenotebuttonlabel":"Update",
+      "@updatenotebuttonlabel":{"description":"update note button text"},
+      "alearttitle":"Delete note",
+      "@alearttitle":{"description":"delete note aleart title"},
+      "aleartdescription":"Do you want to delete this note",
+      "@aleartdescription":{"description":"delete note aleart description"},
+       "aleartbuttondelete":"Delete",
+      "@aleartbuttondelete":{"description":"aleart button delete"},
+       "aleartbuttonkeep":"Keep",
+      "@aleartbuttonkeep":{"description":"aleart button keep"}
+      
+   
+}

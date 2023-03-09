@@ -1,0 +1,19 @@
+{
+    "language":"العربية",
+    "homepagetitle":"الملاحظات",
+    "zeronotes":"لا يوجد لديك ملاحظات! قم بإضافة بعض الملاحظات",
+    "addnote":"إضافة ملاحظة",
+    "addnotetitlelabel":"العنوان",
+    "addnotedescriptionlabel":"إضافة ملاحظة",
+    "addnotebuttonlabel":"إضافة",
+    "addnotetitleerrorlabel":"رجاء قم بإضافة عنوان الملاحظة",
+    "addnotedescriptionerrorlabel":"رجاء قم بإضافة الملاحظة",
+    "updatenote":"تعديل الملاحظة",
+    "updatenotebuttonlabel":"تعديل ",
+    "alearttitle":"حذف الملاحظة",
+    "aleartdescription":"هل تريد حذف هذه الملاحظة",
+    "aleartbuttondelete":"حذف",
+    "aleartbuttonkeep":"إبقاء"
+
+
+}
