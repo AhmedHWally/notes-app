@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/note.dart';
+import 'add_note_screen.dart';
 
 class NoteDetailsScreen extends StatefulWidget {
   const NoteDetailsScreen({super.key});
@@ -55,7 +56,7 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
                 _editedNote.description,
                 style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 36,
                     shadows: [
                       Shadow(
                           color: Colors.black,
@@ -67,6 +68,21 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
           ]),
         )
       ]),
+      floatingActionButton: SizedBox(
+        width: 75,
+        height: 75,
+        child: FloatingActionButton(
+            backgroundColor: Colors.grey,
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamed(AddNote.routeName, arguments: _editedNote);
+            },
+            child: const Icon(
+              Icons.edit,
+              color: Colors.black,
+              size: 30,
+            )),
+      ),
     );
   }
 }

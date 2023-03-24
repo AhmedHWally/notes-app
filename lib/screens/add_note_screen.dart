@@ -28,7 +28,7 @@ class _AddNoteState extends State<AddNote> {
   }
 
   final _formKey = GlobalKey<FormState>();
-  String? title;
+  String title = "";
   String? note;
   Future<void> addNote() async {
     if (!_formKey.currentState!.validate()) {
@@ -40,9 +40,9 @@ class _AddNoteState extends State<AddNote> {
       await Provider.of<NoteProvider>(context, listen: false).update(newNote);
     } else {
       await Provider.of<NoteProvider>(context, listen: false)
-          .addNote(title!, note!);
+          .addNote(title, note!);
     }
-    Navigator.of(context).pop();
+    Navigator.popUntil(context, (route) => route.isFirst);
   }
 
   @override
@@ -97,13 +97,6 @@ class _AddNoteState extends State<AddNote> {
                 child: Column(children: [
                   TextFormField(
                     initialValue: "${_editedNote.title} ",
-                    validator: (value) {
-                      if (value?.trim() == "" || value == null) {
-                        return AppLocalizations.of(context)!
-                            .addnotetitleerrorlabel;
-                      }
-                      return null;
-                    },
                     style: const TextStyle(color: Colors.white),
                     onChanged: (value) {
                       title = value;
@@ -144,7 +137,7 @@ class _AddNoteState extends State<AddNote> {
                     },
                     style: const TextStyle(color: Colors.white),
                     onChanged: (value) {
-                      note = value.replaceAll("\n", " ");
+                      note = value;
                     },
                     decoration: InputDecoration(
                         alignLabelWithHint: true,
