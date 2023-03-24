@@ -4,7 +4,7 @@ import 'package:last_note_app/widgets/note_body.dart';
 import './add_note_screen.dart';
 import 'package:provider/provider.dart';
 import '../providers/note_provider.dart';
-import 'note_details_screen.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
 
