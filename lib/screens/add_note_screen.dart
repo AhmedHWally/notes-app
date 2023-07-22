@@ -15,21 +15,30 @@ class _AddNoteState extends State<AddNote> {
   var _isInit = true;
   bool isUpdate = false;
   Note _editedNote = const Note(id: null, title: '', description: '');
+  final _formKey = GlobalKey<FormState>();
+  String title = "";
+  String? note;
+  final titleController = TextEditingController();
+  final bodyController = TextEditingController();
   @override
   void didChangeDependencies() {
     if (_isInit) {
       if (ModalRoute.of(context)?.settings.arguments != null) {
         _editedNote = ModalRoute.of(context)?.settings.arguments as Note;
+        title = _editedNote.title;
+        note = _editedNote.description;
+        titleController.text = _editedNote.title;
+        bodyController.text = _editedNote.description;
         isUpdate = true;
+      } else {
+        titleController.text = "";
+        bodyController.text = "";
       }
     }
     _isInit = false;
     super.didChangeDependencies();
   }
 
-  final _formKey = GlobalKey<FormState>();
-  String? title;
-  String? note;
   Future<void> addNote() async {
     if (!_formKey.currentState!.validate()) {
       return;
@@ -40,7 +49,7 @@ class _AddNoteState extends State<AddNote> {
       await Provider.of<NoteProvider>(context, listen: false).update(newNote);
     } else {
       await Provider.of<NoteProvider>(context, listen: false)
-          .addNote(title!, note!);
+          .addNote(title, note!);
     }
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
@@ -96,13 +105,17 @@ class _AddNoteState extends State<AddNote> {
                 key: _formKey,
                 child: Column(children: [
                   TextFormField(
-                    initialValue: "${_editedNote.title} ",
-                    validator: (value) {
-                      if (value?.trim() == "" || value == null) {
-                        return AppLocalizations.of(context)!
-                            .addnotetitleerrorlabel;
+                    controller: titleController,
+                    onTap: () {
+                      if (titleController.selection ==
+                          TextSelection.fromPosition(TextPosition(
+                              offset: titleController.text.length - 1))) {
+                        setState(() {
+                          titleController.selection =
+                              TextSelection.fromPosition(TextPosition(
+                                  offset: titleController.text.length));
+                        });
                       }
-                      return null;
                     },
                     style: const TextStyle(color: Colors.white),
                     onChanged: (value) {
@@ -134,7 +147,17 @@ class _AddNoteState extends State<AddNote> {
                     height: 20,
                   ),
                   TextFormField(
-                    initialValue: "${_editedNote.description} ",
+                    controller: bodyController,
+                    onTap: () {
+                      if (bodyController.selection ==
+                          TextSelection.fromPosition(TextPosition(
+                              offset: bodyController.text.length - 1))) {
+                        setState(() {
+                          bodyController.selection = TextSelection.fromPosition(
+                              TextPosition(offset: bodyController.text.length));
+                        });
+                      }
+                    },
                     validator: (value) {
                       if (value?.trim() == "" || value == null) {
                         return AppLocalizations.of(context)!
@@ -144,7 +167,7 @@ class _AddNoteState extends State<AddNote> {
                     },
                     style: const TextStyle(color: Colors.white),
                     onChanged: (value) {
-                      note = value.replaceAll("\n", " ");
+                      note = value;
                     },
                     decoration: InputDecoration(
                         alignLabelWithHint: true,

@@ -38,6 +38,7 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     final notes = Provider.of<NoteProvider>(context);
     final provider = Provider.of<LocaleProvider>(context, listen: false);
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -118,7 +119,8 @@ class _NotesScreenState extends State<NotesScreen> {
                         crossAxisCount: 2,
                         mainAxisExtent: 220,
                       ),
-                      itemBuilder: (ctx, i) => Notebody(notes.notes[i]),
+                      itemBuilder: (ctx, i) =>
+                          Notebody(notes.notes.reversed.toList()[i]),
                       itemCount: notes.notes.length,
                     ),
         ]));
